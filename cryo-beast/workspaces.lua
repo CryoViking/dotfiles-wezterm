@@ -1,6 +1,5 @@
+local constants = require("constants")
 local wezterm = require("wezterm")
-local functions = require("functions")
-local constants = functions.require_host_or_default("constants")
 
 local M = {}
 

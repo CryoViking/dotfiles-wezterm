@@ -1,14 +1,15 @@
 -- pull in the wezterm API
 local wezterm = require("wezterm")
 
+local functions = require("functions")
+
 local config = {}
-local constants = require("constants")
+local constants = functions.require_host_or_default("constants")
 
 if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
--- FONT OPTIONS
 -- Configuration line height
 local height_base = 1
 local height_fractal = 0.5
@@ -24,62 +25,9 @@ config.font = wezterm.font_with_fallback({
 config.font_size = 18
 
 -- Colourscheme
--- config.color_scheme = "Kasugano (terminal.sexy)"
--- config.color_scheme = "Rosé Pine Moon (base16)"
-config.color_scheme = "Kanagawa Dragon (Gogh)"
--- config.color_scheme = "Nord (Gogh)"
--- config.colors = {
--- 	-- The default text color
--- 	foreground = "#E4C7FC",
--- 	-- The default background color
--- 	background = "#09090D",
---
--- 	-- Overrides the cell background color when the current cell is occupied by the
--- 	-- cursor and the cursor style is set to Block
--- 	cursor_bg = "#52ad70",
--- 	-- Overrides the text color when the current cell is occupied by the cursor
--- 	cursor_fg = "black",
--- 	-- Specifies the border color of the cursor when the cursor style is set to Block,
--- 	-- or the color of the vertical or horizontal bar when the cursor style is set to
--- 	-- Bar or Underline.
--- 	cursor_border = "#52ad70",
---
--- 	-- the foreground color of selected text
--- 	selection_fg = "black",
--- 	-- the background color of selected text
--- 	selection_bg = "#fffacd",
---
--- 	-- The color of the scrollbar "thumb"; the portion that represents the current viewport
--- 	scrollbar_thumb = "#222222",
---
--- 	-- The color of the split lines between panes
--- 	split = "#444444",
---
--- 	-- Colours here are based on: https://github.com/Shadorain/shadotheme/tree/master
--- 	ansi = {
--- 		"#140A1D",
--- 		"#B52A5B",
--- 		"#FF4971",
--- 		"#8897FA",
--- 		"#BD93F9",
--- 		"#E9729D",
--- 		"#F18FB0",
--- 		"#F1C4E0",
--- 	},
--- 	brights = {
--- 		"#A8899C",
--- 		"#B52A5B",
--- 		"#FF4971",
--- 		"#8897F4",
--- 		"#BD93F9",
--- 		"#E9729D",
--- 		"#F18FB0",
--- 		"#F1C4E0",
--- 	},
---
--- 	-- Arbitrary colors of the palette in the range from 16 to 255
--- 	indexed = { [136] = "#af8700" },
--- }
+config.color_scheme_dirs = { wezterm.config_dir .. "/themes" }
+config.color_scheme = "fallout4_enhanced"
+config.colors = require("themes.fallout4_enhanced")
 
 -- tab bar stuff
 config.enable_tab_bar = false
@@ -88,7 +36,7 @@ config.enable_tab_bar = false
 config.adjust_window_size_when_changing_font_size = false
 
 -- keymaps
-local keys_config = require("keymaps")
+local keys_config = functions.require_host_or_default("keymaps")
 config.keys = keys_config
 
 config.set_environment_variables = {
@@ -108,7 +56,7 @@ local wallpapers = "/Users/cryosis/.config/wezterm/wallpapers/"
 config.background = {
 	{
 		source = {
-			File = wallpapers .. "ice_flake_wallpaper.jpg",
+			File = wallpapers .. "waifu_wallpaper_001.png",
 		},
 		width = "Cover",
 		height = "Cover",
@@ -117,7 +65,7 @@ config.background = {
 		horizontal_align = "Center",
 		vertical_align = "Middle",
 		hsb = {
-			brightness = 0.011,
+			brightness = 0.005,
 		},
 	},
 }
@@ -126,7 +74,9 @@ config.background = {
 local mux = wezterm.mux
 wezterm.on("gui-startup", function(cmd)
 	-- We want to startup in the default workspace
-	mux.set_active_workspace(constants.default_workspace)
+	if constants.default_workspace then
+		mux.set_active_workspace(constants.default_workspace)
+	end
 end)
 
 return config

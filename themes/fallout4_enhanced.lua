@@ -1,0 +1,1 @@
+/Users/cryosis/NeovimAdaptus/cryo_themes.nvim/extras/wezterm/fallout4_enhanced.lua

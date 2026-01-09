@@ -1,6 +1,5 @@
+local constants = require("constants")
 local wezterm = require("wezterm")
-local functions = require("functions")
-local constants = functions.require_host_or_default("constants")
 
 local M = {}
 
@@ -9,6 +8,23 @@ local workspace_configs = {
 		workspace = constants.default_workspace,
 		cwd = wezterm.home_dir,
 		args = nil,
+	},
+
+	[constants.muli_workspace] = {
+		workspace = constants.muli_workspace,
+		cwd = "/Users/cryosis/HouseHlaalu/EnchantisAutomata/",
+	},
+
+	[constants.obsidian_workspace] = {
+		workspace = constants.obsidian_workspace,
+		cwd = "/Users/cryosis/Zettelkasten/Zettelkasten/",
+		args = { "nvim" },
+	},
+
+	[constants.monitoring_workspace] = {
+		workspace = constants.monitoring_workspace,
+		cwd = wezterm.home_dir,
+		args = { "htop" },
 	},
 }
 
