@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
-local constants = require("constants")
-local workspaces = require("workspaces")
+local functions = require("functions")
+local constants = functions.require_host_or_default("constants")
+local workspaces = functions.require_host_or_default("workspaces")
 
 function table_contains(table, value)
 	for _, v in ipairs(table) do
