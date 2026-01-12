@@ -1,5 +1,7 @@
 local M = {}
 
+M.hostname = "CryoForge.local"
+
 M.obsidian_workspace = "obsidian_workspace"
 M.monitoring_workspace = "monitoring_workspace"
 M.muli_workspace = "muli_workspace"
