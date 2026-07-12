@@ -12,10 +12,6 @@ local function table_contains(tbl, value)
 	return false
 end
 
-wezterm.on("update-right-status", function(window, pane)
-	window:set_right_status(window:active_workspace())
-end)
-
 local disable = "DisableDefaultAssignment"
 
 local SEP = "|"

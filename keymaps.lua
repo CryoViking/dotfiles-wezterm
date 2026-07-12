@@ -12,7 +12,7 @@ local function table_contains(tbl, value)
 	return false
 end
 
-wezterm.on("update-right-status", function(window, pane)
+wezterm.on("update-right-status", function(window, _)
 	window:set_right_status(window:active_workspace())
 end)
 
