@@ -129,7 +129,7 @@ local keys = {
 	},
 	{
 		key = "c",
-		modes = SUPER,
+		mods = SUPER,
 		action = wezterm.action.Multiple({
 			{ CopyTo = "ClipboardAndPrimarySelection" },
 			{ CopyMode = "ScrollToBottom" },
@@ -138,7 +138,7 @@ local keys = {
 	},
 	{
 		key = "v",
-		modes = SUPER,
+		mods = SUPER,
 		action = wezterm.action.Multiple({
 			{ PasteFrom = "PrimarySelection" },
 			{ PasteFrom = "Clipboard" },
