@@ -76,30 +76,6 @@ local keys = {
 			workspaces.switch_workspace(constants.default_workspace, nil)
 		end),
 	},
-	-- Switch to muli workspace
-	{
-		key = "w",
-		mods = LEADER,
-		action = wezterm.action_callback(function()
-			workspaces.switch_workspace(constants.muli_workspace, nil)
-		end),
-	},
-	-- Switch to obsidian workspace
-	{
-		key = "o",
-		mods = LEADER,
-		action = wezterm.action_callback(function()
-			workspaces.switch_workspace(constants.obsidian_workspace, nil)
-		end),
-	},
-	-- Switch to a monitoring workspace, which will have `top` launched into it
-	{
-		key = "i",
-		mods = LEADER,
-		action = wezterm.action_callback(function()
-			workspaces.switch_workspace(constants.monitoring_workspace, nil)
-		end),
-	},
 	-- Disable keymaps
 	{
 		key = "-",
