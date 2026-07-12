@@ -62,9 +62,7 @@ function M.switch_workspace(config_key, cmd_args)
 		return true -- Need to exit out of the function early
 	end
 
-	if config.args == nil then
-		config.args = args
-	end
+	local spawn_args = config.args or args
 
 	-- Check if the workspace exists
 	local workspace_exists = check_workspace_exists(config.workspace)
@@ -77,7 +75,7 @@ function M.switch_workspace(config_key, cmd_args)
 		local tab, pane, window = mux.spawn_window({
 			workspace = config.workspace,
 			cwd = config.cwd,
-			args = config.args,
+			args = spawn_args,
 		})
 
 		-- Switch to the new workspace

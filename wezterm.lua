@@ -50,7 +50,7 @@ config.window_padding = {
 	bottom = 0,
 }
 
-local wallpapers = "/Users/cryosis/.config/wezterm/wallpapers/"
+local wallpapers = wezterm.config_dir .. "/wallpapers/"
 -- Terminal background image
 config.background = {
 	{
