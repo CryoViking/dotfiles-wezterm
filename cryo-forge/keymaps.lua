@@ -2,6 +2,7 @@ local wezterm = require("wezterm")
 local functions = require("functions")
 local constants = functions.require_host_or_default("constants")
 local workspaces = functions.require_host_or_default("workspaces")
+local forge_functions = require("cryo-forge.forge_functions")
 
 local function table_contains(tbl, value)
 	for _, v in ipairs(tbl) do
@@ -107,6 +108,11 @@ local keys = {
 		mods = CTRL,
 		action = disable,
 	},
+	{
+		key = "[",
+		mods = SUPER,
+		action = disable,
+	},
 	-- New keymaps
 	{
 		key = "o",
@@ -142,6 +148,11 @@ local keys = {
 				Percent = 50,
 			},
 		}),
+	},
+	{
+		key = "[",
+		mods = "CMD",
+		action = wezterm.action_callback(forge_functions.toggle_ai_pair),
 	},
 }
 
