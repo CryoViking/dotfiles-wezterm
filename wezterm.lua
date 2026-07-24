@@ -18,12 +18,37 @@ config.line_height = height_base + (height_fractal / 10)
 config.cell_width = 1.05
 
 -- Font settings
-config.font_size = 18
+config.font_size = 16
 config.font = wezterm.font_with_fallback({
 	-- Explicitly pass a specific weight to your primary font:
-	{ family = "JetBrains Mono", weight = "Light" },
-	{ family = "FiraMono Nerd Font", weight = "Regular" },
+	{
+		family = "Maple Mono NF",
+		weight = "Regular",
+		harfbuzz_features = {
+			-- Contextual Alternates (Enabled by default, but explicitly declared here)
+			"calt",
+
+			-- Character Variants (cvXX)
+			"cv01",
+			"cv10",
+			"cv43",
+			"cv66",
+			-- => |=
+			-- >>> <<<
+			-- ~= !=
+
+			-- Stylistic Sets (ssXX) for specific ligature/glyph layouts
+			"ss03",
+			"ss07",
+			"ss08",
+			"ss09",
+			"ss10",
+			"ss11",
+		},
+	},
+	-- { family = "FiraMono Nerd Font", weight = "Regular" },
 })
+
 -- Colourscheme
 -- config.color_scheme_dirs = { wezterm.config_dir .. "/themes" }
 config.colors = require("themes.active")
