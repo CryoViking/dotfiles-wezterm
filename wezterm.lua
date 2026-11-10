@@ -76,12 +76,14 @@ config.window_padding = {
 }
 
 local wallpapers = wezterm.config_dir .. "/wallpapers/"
+-- `theme-set` links the theme's wallpaper to wallpapers/active.<ext>
+local active_wallpaper = wezterm.glob(wallpapers .. "active.*")[1] or (wallpapers .. "sleeping_forest_mist.jpg")
 -- Terminal background image
 config.background = {
 	{
 		source = {
 			-- File = wallpapers .. "starry-sky-purple.jpg",
-			File = wallpapers .. "sleeping_forest_mist.jpg",
+			File = active_wallpaper,
 		},
 		width = "Cover",
 		height = "Cover",
