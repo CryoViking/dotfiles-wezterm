@@ -5,7 +5,8 @@ function M.toggle_ai_pair(window, pane)
 	local project_name = user_vars.AI_PAIR
 	local active = user_vars.AI_ACTIVE
 
-	local next_active = (active == "agy") and "codex" or "agy"
+	local cycle = { agy = "codex", codex = "claude", claude = "agy" }
+	local next_active = cycle[active] or "agy"
 
 	if user_vars.AI_SLOT ~= "1" or not project_name or not active then
 		window:toast_notification("AI Pair", "The active pane is not an AI pair", nil, 3000)
